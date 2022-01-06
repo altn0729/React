@@ -19,18 +19,70 @@
 
      얀 버전 또는 설치 확인: yarn -v
 
+  5) Chrome Browser에서 디버깅 툴 설치
+     확장 프로그램에서 react dev 검색
+     React Developer Tools 설치
+
+  6) VSCode 에서 유용한 익스텐션
+     React code snippets: 컴포넌트를 일일히 수동적으로 하지 않아도 rcc 엔터만 누르면 바로 리액트 컴포넌트가 생길 수 있도록 도와준다.
+     Auth import: 다른 리액트 컴포넌트를 import 할 때 자동적으로 해준다.
+
+     프론트엔드 유용한 익스텐션: https://youtu.be/bS9yTI2fC0w
+
+  7) jsx 또는 js 파일 그리고 뒤에서 다룰 postCSS에서 Emmet을 사용하려면 settings.json에서 아래와 같이 추가
+     왼쪽 하단에 있는 톱니 바퀴 버튼 누른 후 성절 클릭
+     우측 상단에 설정 아이콘과 비슷한 버튼 클릭 후 추가
+     
+     "emmet.includeLanguages": {
+         "javascript": "javascriptreact",
+         "postcss": "css"
+     },
+     "emmet.syntaxProfiles": {
+         "postcss": "css"
+     },
+     
+
 * Create React app
   페이스북에서 만든 리액트를 개발하는 수많은 개발자들이 공통적으로 사용하는
   유용한 Tool들을 한번에 자동적으로 설치할 수 있게 도와주는 라이브러리
 
   Hot module reloading: 작성되는 코드가 바로 브라우저에 업데이트 되는 것까지 포함
 
-  경우에 따른 프로젝트 생성 방법 세가지
+  경우에 따른 프로젝트 생성 방법 3가지
   npx create-react-app projectName
   npm init react-app projectName
   yarn create-react-app projectName
 
+  얀 기본 명령어 4가지
   yarn start : 작성한 코드를 직접 확인해 볼 수 있도록 실행
   yarn build : 실행하지는 않고 만든 앱을 배포할 수 있도록 빌드
   yarn test  : 작성한 유닛 테스트의 성공 여부를 실행
-  yarn eject : 설치된 툴 확인, 수정, 설정 하고 싶을때 사용
+  yarn eject : 설치된 툴 확인, 수정, 설정 하고 싶을때 사용된다.
+               단, eject를 사용하면 압출 풀리듯 수많은 파일이 보이게 되므로 신중하게 사용
+
+
+* eject 안에 숨겨진 Tool 설명 (중요한 툴)
+  - BABEL: 브라우저나 예전 버전의 브라우저가 이해할 수 있는 소스코드로 변환 해준다.
+           어느 정도 버전까지 변환 할 건지 세부적으로 설정도 가능하다.
+  
+  - Webpack: 작성된 코드를 번들링 즉, 소스 코드나 리소스 이미지들을 한 번에 묶어서
+             번들 단위로 사용자에게 제공할 수 있도록 도와준다.
+
+             또한 Java Script를 작성한 소스 코드를 조금 줄여주고,
+             긴 변수나 함수의 이름을 다른 사람들, 해커들이 알아 보지 못하도록 수정도 해준다.
+
+             쉽게 정리하면 만들어진 프로젝트, 소스 코드를 사용자에게 간편하게 전달할 수 있도록
+             모듈을 번틀링 해준다.
+
+  - ESLint: 즉각적으로 작성된 코드에 잘못된 점이 있다면 경고 사인을 보내준다.
+
+  - Jest: Java Script 코드를 작성할 때 유닛 테스트를 할 수 있게 도와주는 테스팅 프레임워크 이다.
+          테스팅을 할 때 많이 사용된다.
+  
+  - Post CSS: CSS 전처리기 중 하나라고 볼 수 있고 less, sass와 비슷하다.
+
+              제공되는 프레임워크에 맞게 CSS를 작성하면 그 CSS를 다시 브라우저가
+              이해할 수 있는 CSS로 변환해준다.
+
+              PostCSS는 굉장히 다양한 플러그인이 있어서 우리가 원하는 것을
+              조금 더 추가할 수 있다.
