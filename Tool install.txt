@@ -1,0 +1,36 @@
+* 리액트 설치전 준비해야 할 툴
+  1) 터미널 설치
+     Cmder  (Window, 사이트: https://cmder.net/)
+     Iterms (Mac)
+
+  2) Node JS (https://nodejs.org/en/)
+     LTS Version 설치
+     노드 버전 또는 설치 확인: node -v
+
+  3) Git (https://git-scm.com/downloads)
+     깃 버전 또는 설치 확인: git --version      
+
+  4) Yarn (페이스북에서 만든 패키지 매니저)
+     Yarn을 사용하는 이유는 npm 보다 성능이 더 빠르고, 조금 더 일관적으로 버전 관리가 쉽고, 보안적으로도 좀 더 안전하기 때문이다.
+     npm에서 쓰는 Package.json 파일을 그대로 유지하면서 npm과 호환이 가능하게 사용할 수 있다.
+
+     얀 설치 방법 (Window): npm install yarn --global, 공식 사이트: https://classic.yarnpkg.com/en/docs/install/#windows-stable
+     얀 설치 방법 (Mac)   : brew install yarn 
+
+     얀 버전 또는 설치 확인: yarn -v
+
+* Create React app
+  페이스북에서 만든 리액트를 개발하는 수많은 개발자들이 공통적으로 사용하는
+  유용한 Tool들을 한번에 자동적으로 설치할 수 있게 도와주는 라이브러리
+
+  Hot module reloading: 작성되는 코드가 바로 브라우저에 업데이트 되는 것까지 포함
+
+  경우에 따른 프로젝트 생성 방법 세가지
+  npx create-react-app projectName
+  npm init react-app projectName
+  yarn create-react-app projectName
+
+  yarn start : 작성한 코드를 직접 확인해 볼 수 있도록 실행
+  yarn build : 실행하지는 않고 만든 앱을 배포할 수 있도록 빌드
+  yarn test  : 작성한 유닛 테스트의 성공 여부를 실행
+  yarn eject : 설치된 툴 확인, 수정, 설정 하고 싶을때 사용
