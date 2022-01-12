@@ -1,8 +1,6 @@
-import React, { Component } from "react";
+import React, { PureComponent } from "react";
 
-class Nav extends Component {
-  totalCount = (count) => {};
-
+class Nav extends PureComponent {
   render() {
     return (
       <header>

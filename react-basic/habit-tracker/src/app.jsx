@@ -13,21 +13,42 @@ class App extends Component {
     total: { count: 0 },
   };
 
+  // habit.jsx에서 받은 habit 오브젝트를 다시 반환
+  // handleIncrement = () => {
+  //   // key={habit.id}: {id: 1, name: 'Reading ', count: 0}
+  //   console.log(this.props.habit);
+  //   this.props.onIncrement(this.props.habit);
+  // };
+
+  // 즉, handleIncrement = (habit) => {} 이렇게 받을수 있는 이유
+
   handleIncrement = (habit) => {
-    const habits = [...this.state.habits];
-    const index = habits.indexOf(habit);
+    // const habits = [...this.state.habits];
+    // const index = habits.indexOf(habit);
 
-    habits[index].count++;
+    // habits[index].count++;
+    // ure Compopnent에서 cont를 증가시키기 위한 두번째 방법:
+    const habits = this.state.habits.map((item) => {
+      if (item.id === habit.id) {
+        // 새로운 habit object를 생성하고 count를 1 증가
+        return { ...habit, count: habit.count + 1 };
+      }
 
-    this.setState(habits);
+      return item;
+    });
+    this.setState({ habits });
   };
 
   handleDecrement = (habit) => {
-    const habits = [...this.state.habits];
-    const index = habits.indexOf(habit);
-    const count = habits[index].count - 1;
+    const habits = this.state.habits.map((item) => {
+      if (item.id === habit.id) {
+        const count = habit.count - 1;
 
-    habits[index].count = count < 0 ? 0 : count;
+        return { ...habit, count: count < 0 ? 0 : count };
+      }
+
+      return item;
+    });
 
     this.setState({ habits });
   };
@@ -46,7 +67,9 @@ class App extends Component {
 
   handleReset = () => {
     const habits = this.state.habits.map((habit) => {
-      habit.count = 0;
+      if (habit.count !== 0) {
+        return { ...habit, count: 0 };
+      }
 
       return habit;
     });

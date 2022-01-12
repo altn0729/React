@@ -128,3 +128,17 @@
   그리고 상태가 변화될 때 마다 render 함수가 계속 호출이 된다.
 
   그런데도 성능이 괜찮은 이유는 리액트 내부에 VDOM (가상의 돔 트리)이 있기 때문이다.
+
+  * Pure Component, Memo Component
+    컴포넌트의 state나 props가 변화가 없다면 render()가 불려지지 않는다.
+    즉, 최상위에 있는 데이터가 변하지 않으면 render()가 호출 되지 않는다.
+
+    그냥 Component와 달리 Pure Component는 shouldComponentUpdate()가 구현되어 있다.
+
+    이것은 Component가 업데이트가 되기 전에 갖고 있던 state나 props를 업데이트가 될 props와 state를 가볍게 비교한 후 같으면
+    업데이트를 할 필요가 없으므로 shouldComponentUpdate()는 false 값을 리턴, 업데이트 할 필요가 있으면 shouldComponentUpdate()는 true 값을 리턴한다.
+
+    한마디로 동일한 오브젝트를 갖고 있으면 값이 변경되어도 크게 달라진게 없어 변경되지 않지만,
+    오브젝트를 아예 새로 생성해서 변경하면 PureComponent를 잘 사용할 수 있다. (Habit tracker 이해하기)
+
+    공식 사이트: https://reactjs.org/docs/react-api.html#reactpurecomponent
