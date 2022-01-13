@@ -67,3 +67,4 @@ index.html
 <yarn package>
 - 폰트어썸: yarn add @fortawesome/fontawesome-free
            import '@fortawesome/fontawesome-free/js/all.js';
+

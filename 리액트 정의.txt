@@ -129,16 +129,32 @@
 
   그런데도 성능이 괜찮은 이유는 리액트 내부에 VDOM (가상의 돔 트리)이 있기 때문이다.
 
-  * Pure Component, Memo Component
-    컴포넌트의 state나 props가 변화가 없다면 render()가 불려지지 않는다.
-    즉, 최상위에 있는 데이터가 변하지 않으면 render()가 호출 되지 않는다.
+* Pure Component, Memo Component
+  컴포넌트의 state나 props가 변화가 없다면 render()가 불려지지 않는다.
+  즉, 최상위에 있는 데이터가 변하지 않으면 render()가 호출 되지 않는다.
 
-    그냥 Component와 달리 Pure Component는 shouldComponentUpdate()가 구현되어 있다.
+  그냥 Component와 달리 Pure Component는 shouldComponentUpdate()가 구현되어 있다.
 
-    이것은 Component가 업데이트가 되기 전에 갖고 있던 state나 props를 업데이트가 될 props와 state를 가볍게 비교한 후 같으면
-    업데이트를 할 필요가 없으므로 shouldComponentUpdate()는 false 값을 리턴, 업데이트 할 필요가 있으면 shouldComponentUpdate()는 true 값을 리턴한다.
+  이것은 Component가 업데이트가 되기 전에 갖고 있던 state나 props를 업데이트가 될 props와 state를 가볍게 비교한 후 같으면
+  업데이트를 할 필요가 없으므로 shouldComponentUpdate()는 false 값을 리턴, 업데이트 할 필요가 있으면 shouldComponentUpdate()는 true 값을 리턴한다.
 
-    한마디로 동일한 오브젝트를 갖고 있으면 값이 변경되어도 크게 달라진게 없어 변경되지 않지만,
-    오브젝트를 아예 새로 생성해서 변경하면 PureComponent를 잘 사용할 수 있다. (Habit tracker 이해하기)
+  한마디로 동일한 오브젝트를 갖고 있으면 값이 변경되어도 크게 달라진게 없어 변경되지 않지만,
+  오브젝트를 아예 새로 생성해서(가르키는 주소 값이 달라져서) 변경하면 PureComponent를 잘 사용할 수 있다. (Habit tracker 이해하기)
 
-    공식 사이트: https://reactjs.org/docs/react-api.html#reactpurecomponent
+  공식 사이트: https://reactjs.org/docs/react-api.html#reactpurecomponent
+
+* 클래스 안에 있는 멤버 변수들은 클래스가 만들어질 때 딱 한 번만 만들어진다.
+  대신에 state가 변경되거나 props가 업데이트가 되면 render()만 계속 반복해서 호출이 된다.
+  그래서 클래스 안에서 멤버 변수는 한번만 할당이 되어지는 반면에
+
+  함수는 컴포넌트가 변경이 되면 코드블럭 전체가 계속 반복해서 호출이 된다.
+  즉, function Component는 props나 state가 변경이 되면 전부 반복이 되고 지역 변수들도
+  무한정 반복된다.
+
+  그래서 onClick에 전달한 콜백 함수는 첫 번째 불려졌을 때 새로운 함수가 만들어진다.
+
+  또한 반복적으로 reateRef()처럼 매번 새로운 레퍼런스를 만드는 것이 아니라
+  한 번만 만들고 메모리에 저장해 놓은 다음 그것을 재사용 하는 useRef()를 쓴다.
+
+  그리고 비슷한 것으로 함수도 계속 호출될 때마다 재생성 되는것을 막기 위해 함수에는
+  useCallback()이 있다.
