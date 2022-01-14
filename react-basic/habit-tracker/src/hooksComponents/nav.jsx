@@ -1,7 +1,6 @@
-import React from 'react';
+import React, { memo } from 'react';
 
-const Nav = ({ totalCount }) => {
-  console.log(typeof totalCount);
+const Nav = memo(({ totalCount }) => {
   return (
     <header>
       <i className="habit-logo fas fa-leaf"></i>
@@ -9,6 +8,6 @@ const Nav = ({ totalCount }) => {
       <span className="habit-total">{totalCount}</span>
     </header>
   );
-};
+});
 
 export default Nav;

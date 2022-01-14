@@ -1,10 +1,10 @@
-import React from "react";
-import ReactDOM from "react-dom";
-import "./index.css";
-import "@fortawesome/fontawesome-free/js/all.js";
+import React from 'react';
+import ReactDOM from 'react-dom';
+import './index.css';
+import '@fortawesome/fontawesome-free/js/all.js';
 // import App from "./app";
 // import SimpleHabit from "./components/simpleHabit";
-import AppHooks from "./appHooks";
+import AppHooks from './appHooks';
 
 ReactDOM.render(
   <React.StrictMode>
@@ -12,5 +12,5 @@ ReactDOM.render(
     {/* <SimpleHabit /> */}
     <AppHooks />
   </React.StrictMode>,
-  document.getElementById("root")
+  document.getElementById('root')
 );

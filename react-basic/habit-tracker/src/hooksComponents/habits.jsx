@@ -1,5 +1,5 @@
 // import React, { Component } from "react";
-import React from 'react';
+import React, { memo } from 'react';
 import Habit from './habit';
 import HabitAddForm from './habitAddForm';
 

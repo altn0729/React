@@ -1,4 +1,3 @@
-// import React, { memo } from "react";
 import React, { useRef } from 'react';
 
 const HabitAddForm = ({ onAdd }) => {
