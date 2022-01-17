@@ -3,7 +3,7 @@ import React, { memo } from 'react';
 import Habit from './habit';
 import HabitAddForm from './habitAddForm';
 
-const Habits = ({ habits, onIncrement, onDecrement, onDelete, onAdd, onReset }) => {
+const Habits = memo(({ habits, onIncrement, onDecrement, onDelete, onAdd, onReset }) => {
   return (
     <>
       <HabitAddForm onAdd={onAdd} />
@@ -17,6 +17,6 @@ const Habits = ({ habits, onIncrement, onDecrement, onDelete, onAdd, onReset }) 
       </button>
     </>
   );
-};
+});
 
 export default Habits;

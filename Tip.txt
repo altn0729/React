@@ -68,3 +68,20 @@ index.html
 - 폰트어썸: yarn add @fortawesome/fontawesome-free
            import '@fortawesome/fontawesome-free/js/all.js';
 
+<배포>
+- Github에 있는 원격의 주소를 나의 로컬에 있는 Git 파일과 연결
+  명령어: git remote add origin git@github.com:altn0729/경로...
+
+  이때까지 작업한 파일이 있다면 
+  명령어: git add *
+
+  그 후
+  명령어: git commit -m "작성한 내용"
+
+  커밋까지 끝낸 후
+  명령어: git push 또는 git push -u origin master
+
+- Git을 하는 중 문제가 생길 경우 로그를 찾아본다.
+  명령어: open ~/.gitconfig
+
+- 공식 사이트: https://create-react-app.dev/docs/deployment/#github-pages
