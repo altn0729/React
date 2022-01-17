@@ -1,0 +1,27 @@
+Post CSS
+- CSS 전처리기라고 불리고 반복적이고 중복되는 코드 작성을 최소화 하고자 개발됐다.
+  Post CSS는 autoprefixer라는 것을 쓸 수가 있는데, fullscreen 이라는 상태 CSS를 사용하게 되면
+  webkit과 Microsoft Brower와 호환이 되려면 prefix(ex: -webkit-full-screen, -ms-fullscreen)를
+  계속 붙여 줘야 하는데 Post CSS는 알아서 자동 추가 해준다.
+
+  또한 Post CSS는 모듈화가 되기 때문에 뱀(Block Element Modifier) 같이 복잡한 이름 명을 쓰지 않아도 간편하게 관리할 수 있다.
+
+- 모듈화 방법
+  임포트: ex) import styles from './testCSS.module.css';
+  파일명: ex) testCSS.module.css
+
+  return (
+    <div className = {styles.button (css name 기입)}>
+      <span className = {styles.text}></span>
+    </div>
+  )
+
+  PostCSS도 CSS에서 쓰던 이름명 규칙 그대로 쓸 수 있다.
+  다만, CSS 파일에서 - 로 적힌 이름은 JS 파일에서 쓸때는 camelCase로 호출해야 한다.
+
+  ex)
+  CSS: fa-globe 라고 정의 했다면
+  JS: faGlobe 라고 쓰셔야 해요
+
+
+- 공식 사이트: https://postcss.org/

@@ -68,7 +68,7 @@ index.html
 - 폰트어썸: yarn add @fortawesome/fontawesome-free
            import '@fortawesome/fontawesome-free/js/all.js';
 
-<배포>
+<배포 Git hub 버전>
 - Github에 있는 원격의 주소를 나의 로컬에 있는 Git 파일과 연결
   명령어: git remote add origin git@github.com:altn0729/경로...
 
@@ -84,4 +84,39 @@ index.html
 - Git을 하는 중 문제가 생길 경우 로그를 찾아본다.
   명령어: open ~/.gitconfig
 
+- package.json에 설정을 추가한다.
+  "homepage": https://altn0729.github.io/webPortfolio/,
+
+  그리고 얀을 사용하기 때문에 얀 패키지를 설치 해준다.
+  명령어: yarn add gh-pages
+  명령어: npm install --save gh-pages (얀 사용 안할 경우)
+
+  그 후 package.json의 scripts 부분에 해당 문장을 추가해준다.
+  "predeploy": "npm run build",
+  "deploy": "gh-pages -d build",
+
+  그 다음 빌드를 하면 배포용 폴더가 새로 만들어진다.
+  명령어: yarn build
+
+  마지막으로
+  명령어: npm run deploy
+
+  명령어 까지 완료가 되면 깃 홈페이지에 가서 settings에 branch 부분을
+  gh-pages.. 으로 바꾸면 된다.
+
 - 공식 사이트: https://create-react-app.dev/docs/deployment/#github-pages
+
+<배포 Netlify 버전>
+- 일단 Netlify를 글로벌 설치한다.
+  명령어: npm install netlify-cil -g
+
+  그 다음 배포할 폴더로 가서
+  명령어: netlify deploy 
+
+  그 후 create & configure a new site를 선택한다.
+  팀 이름, 사이트 이름, 퍼블리시 디렉토리는 Build 폴더로 설정해준다.
+
+  임시로 생성된 URL 주소에서 이슈(동작)를 잘 하는지 확인한 후 명령어 실행
+  명령어: netlify deploy --prod
+
+  - 공식 사이트: https://create-react-app.dev/docs/deployment/#github-pages
