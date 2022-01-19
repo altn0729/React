@@ -21,7 +21,7 @@ Post CSS
 
   ex)
   CSS: fa-globe 라고 정의 했다면
-  JS: faGlobe 라고 쓰셔야 해요
+  JS: faGlobe 라고 써야한다.
 
 
 - 공식 사이트: https://postcss.org/

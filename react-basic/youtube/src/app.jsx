@@ -1,7 +1,14 @@
+import React from 'react';
+import Search from './components/search';
+import '@fortawesome/fontawesome-free/js/all.js';
 import './app.css';
 
-function App() {
-  return <h1>Hello :)</h1>;
-}
+const App = () => {
+  return (
+    <>
+      <Search />
+    </>
+  );
+};
 
 export default App;
