@@ -9,3 +9,7 @@ button {
   cursor: pointer;
   background-color: transparent;
 }
+
+.app__container {
+  display: flex;
+}
