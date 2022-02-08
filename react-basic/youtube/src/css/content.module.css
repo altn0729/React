@@ -1,7 +1,27 @@
 .content {
-  display: inline-block;
-  width: 320px;
+  width: 360px;
+  margin: 0px 8px;
+  margin-bottom: 40px;
+}
+
+.thumbnails {
+  width: 100%;
 }
 
 .details {
+  height: 100px;
+}
+
+.details > h3 {
+  margin: 12px 0 4px 0;
+  /* 한줄 또는 여러줄의 문장에 대해서 말줄임 */
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+
+.details > p {
+  color: gray;
 }
