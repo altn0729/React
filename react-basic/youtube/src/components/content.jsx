@@ -5,28 +5,37 @@ import numeral from 'numeral';
 
 // snippet, contentDetails, statistics
 
-const Content = ({ getChannels, content }) => {
-  const { channelId, thumbnails, title, channelTitle, publishedAt } = content.snippet;
-  const { viewCount } = content.statistics;
+const Content = ({ content, channels }) => {
+  const {
+    snippet: {
+      channelId,
+      thumbnails: { medium },
+      title,
+      channelTitle,
+      publishedAt,
+    },
+  } = content;
 
-  console.log(getChannels);
+  const {
+    statistics: { viewCount },
+  } = content;
+
+  const channel = () => {
+    channels(channelId).then((item) => console.log(item));
+  };
 
   useEffect(() => {
-    getChannels(channelId);
+    channel();
   });
-
-  // const channelsIcons = () => {
-  //   channels(channelId);
-  // };
 
   return (
     <div className={styles.content}>
       <div>
-        <img className={styles.thumbnails} src={thumbnails.medium.url} alt="thumbnails" />
+        <img className={styles.thumbnails} src={medium.url} alt="thumbnails" />
       </div>
 
       <div className={styles.details}>
-        <img src={thumbnails.default.url} />
+        {/* <img src={thumbnails.default.url} /> */}
         <h3 className="title">{title}</h3>
         <p className="channelTitle">{channelTitle}</p>
         <p>

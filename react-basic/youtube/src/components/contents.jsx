@@ -2,11 +2,13 @@ import React, { useEffect } from 'react';
 import Content from './content';
 import styles from '../css/contents.module.css';
 
-const Contents = ({ getChannels, videos }) => {
+const Contents = ({ videos, channels }) => {
+  console.log(`contents: ${channels}`);
+
   return (
     <div className={styles.contents}>
       {videos.map((content) => (
-        <Content key={content.id} getChannels={getChannels} content={content} />
+        <Content key={content.id} content={content} channels={channels} />
       ))}
     </div>
   );

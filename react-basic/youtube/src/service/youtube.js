@@ -27,7 +27,7 @@ class Youtube {
     return response.data.items;
   }
 
-  async getChannels(channelId) {
+  async channels(channelId) {
     const response = await this.youtube.get('channels', {
       params: {
         part: 'snippet',
