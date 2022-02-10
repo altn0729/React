@@ -1,11 +1,12 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import styles from '../css/content.module.css';
 import moment from 'moment';
 import numeral from 'numeral';
 
 // snippet, contentDetails, statistics
 
-const Content = ({ content, channels }) => {
+const Content = ({ content, youtubeService }) => {
+  const [channelIcon, setChannelIcon] = useState();
   const {
     snippet: {
       channelId,
@@ -20,13 +21,11 @@ const Content = ({ content, channels }) => {
     statistics: { viewCount },
   } = content;
 
-  const channel = () => {
-    channels(channelId).then((item) => console.log(item));
-  };
-
   useEffect(() => {
-    channel();
-  });
+    youtubeService
+      .channels(channelId)
+      .then((channel) => channel.map((items) => setChannelIcon(items.snippet.thumbnails.default.url)));
+  }, [youtubeService, channelId]);
 
   return (
     <div className={styles.content}>
@@ -35,12 +34,17 @@ const Content = ({ content, channels }) => {
       </div>
 
       <div className={styles.details}>
-        {/* <img src={thumbnails.default.url} /> */}
-        <h3 className="title">{title}</h3>
-        <p className="channelTitle">{channelTitle}</p>
-        <p>
-          {numeral(viewCount).format('0.a').toUpperCase()} views · {moment(publishedAt).fromNow()}
-        </p>
+        <div className={styles.channelThumbnails}>
+          <img src={channelIcon} alt="channelIcon" />
+        </div>
+
+        <div className={styles.channelDetails}>
+          <h3 className="videoTitle">{title}</h3>
+          <p className="channelTitle">{channelTitle}</p>
+          <p>
+            {numeral(viewCount).format('0.a').toUpperCase()} views · {moment(publishedAt).fromNow()}
+          </p>
+        </div>
       </div>
     </div>
   );

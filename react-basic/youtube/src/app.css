@@ -2,9 +2,12 @@
   box-sizing: border-box;
   padding: 0px;
   margin: 0px;
+  list-style: none;
 }
 
 body {
+  position: relative;
+  font-family: 'Roboto', sans-serif, Arial;
 }
 
 button {

@@ -3,6 +3,10 @@ input:focus {
 }
 
 .container {
+  top: 0;
+  left: 0;
+  position: fixed;
+  background-color: white;
   margin: auto;
   display: flex;
   align-items: center;
@@ -10,6 +14,7 @@ input:focus {
   width: 100%;
   height: 56px;
   padding: 0px 16px;
+  z-index: 1;
 }
 
 /* logo */

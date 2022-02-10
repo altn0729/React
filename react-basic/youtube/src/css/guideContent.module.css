@@ -1,0 +1,84 @@
+.guideContent {
+  z-index: 2;
+  top: 56px;
+  left: 0px;
+  display: flex;
+  position: fixed;
+  width: 260px;
+  min-width: 260px;
+  background-color: white;
+}
+
+.section {
+  width: 100%;
+}
+
+.innerSections {
+  font-size: 14px;
+  padding: 12px 0;
+  border-bottom: 1px solid #d9d9d9;
+}
+
+.sectionItems {
+  width: 240px;
+}
+
+.sectionItem {
+  line-height: 40px;
+  width: 100%;
+  padding: 0 24px;
+  height: 40px;
+}
+
+.sectionItem:hover {
+  background-color: #f2f2f2;
+}
+
+.itemActive {
+  background-color: #d9d9d9;
+  font-weight: bold;
+}
+
+.innerPromo {
+  font-size: 14px;
+  padding: 16px 32px;
+  border-bottom: 1px solid #d9d9d9;
+}
+
+.innerSign {
+  text-align: center;
+  line-height: 36px;
+  width: 116px;
+  height: 36px;
+  color: #065fd4;
+  border: 1px solid #065fd4;
+  border-radius: 3px;
+  margin-top: 12px;
+}
+
+.footerPrimary {
+  color: #606060;
+  font-weight: 500;
+  font-size: 13px;
+  line-height: 1.4;
+  padding: 16px 24px 0px;
+}
+
+.footerSecondary {
+  color: #606060;
+  font-weight: 500;
+  font-size: 13px;
+  line-height: 1.4;
+  padding: 12px 24px 0px;
+}
+
+.copyright {
+  color: #909090;
+  font-size: 12px;
+  padding: 16px 24px;
+}
+
+.guideContent::after {
+  content: '';
+  width: 20px;
+}

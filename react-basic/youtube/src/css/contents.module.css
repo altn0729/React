@@ -1,7 +1,26 @@
-.contents {
+.container {
   width: 100%;
-  padding: 0px 16px;
-  padding-top: 24px;
+  height: 100vh;
+}
+
+.contentsHeader {
+  z-index: 1;
+  position: fixed;
+  left: 260px;
+  top: 56px;
+  height: 56px;
+  width: 100%;
+  background-color: white;
+  border-top: 1px solid #d9d9d9;
+  border-bottom: 1px solid #d9d9d9;
+}
+
+.contents {
+  position: absolute;
+  top: 112px;
+  left: 260px;
+  width: calc(100%-260px);
+  margin-top: 24px;
   display: flex;
   justify-content: center;
   align-items: center;

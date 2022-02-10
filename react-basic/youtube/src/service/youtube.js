@@ -1,4 +1,4 @@
-class Youtube {
+export default class YoutubeService {
   constructor(httpClient) {
     this.youtube = httpClient;
   }
@@ -38,5 +38,3 @@ class Youtube {
     return response.data.items;
   }
 }
-
-export default Youtube;
