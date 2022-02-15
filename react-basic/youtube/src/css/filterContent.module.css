@@ -1,0 +1,33 @@
+.filterContent {
+  display: flex;
+  font-size: 12px;
+  width: 1096px;
+  margin-top: 16px;
+}
+
+.thumbnails {
+  margin-right: 16px;
+}
+
+.title {
+  font-size: 18px;
+}
+
+.channelDetails {
+  padding: 12px 0;
+  display: flex;
+  align-items: center;
+}
+
+.channelTitle {
+  padding-left: 8px;
+}
+
+.statistic {
+  color: #606060;
+}
+
+.channelIcon {
+  width: 24px;
+  border-radius: 50%;
+}

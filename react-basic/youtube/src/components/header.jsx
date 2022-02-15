@@ -1,7 +1,19 @@
-import React from 'react';
-import styles from '../css/search.module.css';
+import React, { useRef } from 'react';
+import styles from '../css/header.module.css';
 
-const Search = () => {
+const Header = ({ search }) => {
+  const searchRef = useRef();
+  const inputRef = useRef();
+
+  const onSubmit = (event) => {
+    event.preventDefault();
+    const value = inputRef.current.value;
+
+    console.log(`Search Result: ${value}`);
+
+    value && search(value);
+  };
+
   return (
     <div className={styles.container}>
       <div className={styles.start}>
@@ -9,9 +21,9 @@ const Search = () => {
       </div>
 
       <div className={styles.center}>
-        <form className={styles.searchForm}>
+        <form className={styles.searchForm} ref={searchRef} onSubmit={onSubmit}>
           <div className={styles.searchCon}>
-            <input type="text" className={styles.search} placeholder="검색" />
+            <input type="text" className={styles.search} placeholder="Search" ref={inputRef} />
             <button className={styles.searchBtn}>
               <img src={`${process.env.PUBLIC_URL}/img/search.png`} alt="logo" />
             </button>
@@ -32,4 +44,4 @@ const Search = () => {
   );
 };
 
-export default Search;
+export default Header;

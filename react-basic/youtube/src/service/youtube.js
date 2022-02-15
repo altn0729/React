@@ -37,4 +37,15 @@ export default class YoutubeService {
 
     return response.data.items;
   }
+
+  async statistics(id) {
+    const response = await this.youtube.get('videos', {
+      params: {
+        part: 'statistics',
+        id: id,
+      },
+    });
+
+    return response.data.items;
+  }
 }

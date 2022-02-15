@@ -1,11 +1,11 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, memo, useState } from 'react';
 import styles from '../css/content.module.css';
 import moment from 'moment';
 import numeral from 'numeral';
 
 // snippet, contentDetails, statistics
 
-const Content = ({ content, youtubeService }) => {
+const Content = memo(({ content, youtubeService }) => {
   const [channelIcon, setChannelIcon] = useState();
   const {
     snippet: {
@@ -42,12 +42,12 @@ const Content = ({ content, youtubeService }) => {
           <h3 className="videoTitle">{title}</h3>
           <p className="channelTitle">{channelTitle}</p>
           <p>
-            {numeral(viewCount).format('0.a').toUpperCase()} views · {moment(publishedAt).fromNow()}
+            {viewCount && numeral(viewCount).format('0.a').toUpperCase()} views · {moment(publishedAt).fromNow()}
           </p>
         </div>
       </div>
     </div>
   );
-};
+});
 
 export default Content;
