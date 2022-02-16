@@ -48,4 +48,14 @@ export default class YoutubeService {
 
     return response.data.items;
   }
+
+  async watch(videoId) {
+    const response = await this.youtube.get('watch', {
+      Params: {
+        v: videoId,
+      },
+    });
+
+    return response.data;
+  }
 }

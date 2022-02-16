@@ -16,9 +16,6 @@
 }
 
 .contents {
-  position: absolute;
-  top: 112px;
-  left: 260px;
   padding-top: 24px;
   display: flex;
   justify-content: center;

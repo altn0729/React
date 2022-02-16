@@ -2,6 +2,15 @@
   width: 360px;
   margin: 0px 8px;
   margin-bottom: 40px;
+  cursor: pointer;
+}
+
+.content:hover {
+  transform: scale(1.1);
+  transition: 300ms ease-in;
+  -webkit-box-shadow: 0px 5px 5px -2px #606060;
+  box-shadow: 0px 5px 5px -2px #606060;
+  background-color: white;
 }
 
 .thumbnails {
@@ -30,8 +39,31 @@
   display: -webkit-box;
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
+  font-size: 16px;
 }
 
 .channelDetails > p {
   color: gray;
+  font-size: 14px;
+}
+
+.hoverVideo {
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.hoverPtag {
+  width: 100%;
+  background-color: #d9d9d9;
+  padding: 10px 5px;
+  margin: 5px;
+  margin-top: 0px;
+  font-size: 14px;
+  display: none;
+}
+
+.content:hover > .hoverVideo > .hoverPtag {
+  display: block;
 }

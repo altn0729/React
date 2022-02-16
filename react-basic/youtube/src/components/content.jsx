@@ -5,8 +5,9 @@ import numeral from 'numeral';
 
 // snippet, contentDetails, statistics
 
-const Content = memo(({ content, youtubeService }) => {
-  const [channelIcon, setChannelIcon] = useState();
+const Content = memo(({ content, youtubeService, onVideoClick }) => {
+  const [channelIcon, setChannelIcon] = useState(null);
+
   const {
     snippet: {
       channelId,
@@ -28,7 +29,7 @@ const Content = memo(({ content, youtubeService }) => {
   }, [youtubeService, channelId]);
 
   return (
-    <div className={styles.content}>
+    <div className={styles.content} onClick={() => onVideoClick(content)}>
       <div>
         <img className={styles.thumbnails} src={medium.url} alt="thumbnails" />
       </div>
@@ -45,6 +46,11 @@ const Content = memo(({ content, youtubeService }) => {
             {viewCount && numeral(viewCount).format('0.a').toUpperCase()} views · {moment(publishedAt).fromNow()}
           </p>
         </div>
+      </div>
+
+      <div className={styles.hoverVideo}>
+        <p className={styles.hoverPtag}>WATCH LATER</p>
+        <p className={styles.hoverPtag}>ADD TO QUEUE</p>
       </div>
     </div>
   );
