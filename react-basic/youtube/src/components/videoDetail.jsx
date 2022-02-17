@@ -11,17 +11,17 @@ const VideoDetail = ({ video, videos, getChannels, channel }) => {
 
   const {
     id,
-    snippet: { channelId, channelTitle, publishedAt, title, tags },
+    snippet: { channelId, channelTitle, description, publishedAt, title, tags },
     statistics: { commentCount, likeCount, viewCount },
   } = video;
 
   // console.log(videos);
-  // console.log(video);
-  console.log(channel);
+  console.log(video);
+  // console.log(channel);
 
-  useEffect(() => {
-    getChannels(channelId);
-  }, [video]);
+  // useEffect(() => {
+  //   getChannels(channelId);
+  // }, [video]);
 
   return (
     <div className={styles.videoContainer}>
@@ -67,7 +67,35 @@ const VideoDetail = ({ video, videos, getChannels, channel }) => {
         </div>
 
         {/* 채널 아이콘, 채널명, 구독자 수, 동영상 설명 */}
-        <div className="">{/* <img src={channel && channel.snippet.thumbnails.default.url} alt="" /> */}</div>
+        <div className={styles.videoDescription}>
+          <div className={styles.channelDetaile}>
+            {/* <img src={channel && channel.snippet.thumbnails.default.url} alt="" /> */}
+            <div className={styles.channelIcon}></div>
+            <div className={styles.channelInfo}>
+              <p className={styles.channelTitle}>{channelTitle}</p>
+              <p className={styles.subscriberCount}>19.9M subscribers</p>
+            </div>
+          </div>
+          <button className={styles.subscriberBtn}>SUBSCRIBE</button>
+        </div>
+        <div className={styles.description}>
+          {description.split('\n').map(
+            (text) =>
+              text !== '' ? (
+                // 키 설정 부분 수정할 것
+                <span key={console.log(text.replace(/\s/gi, '').replace('’', ''))}>
+                  {/* <span key={text.replace(/\s/gi, '').replace('’', '')}> */}
+                  {/* <span key={text.replace(/\s/gi, '').substr(5, 8)}></span> */}
+                  {text}
+                  <br />
+                </span>
+              ) : (
+                <br />
+              )
+            // console.log(text.replace(/\s/gi, '').substr(5, 5))
+          )}
+          {/* {console.log(description)} */}
+        </div>
         {/* 댓글 수 출력 */}
         <div className=""></div>
       </section>
