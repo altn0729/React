@@ -5,8 +5,23 @@
   list-style: none;
 }
 
+a {
+  text-decoration: none;
+}
+a:link {
+  color: blue;
+  text-decoration: none;
+}
+a:visited {
+  color: blue;
+  text-decoration: none;
+}
+a:hover {
+  color: blue;
+  text-decoration: none;
+}
+
 body {
-  position: relative;
   font-family: 'Roboto', sans-serif, Arial;
 }
 
@@ -17,16 +32,15 @@ button {
   background-color: transparent;
 }
 
+.videoDetail {
+  margin-top: 56px;
+  display: flex;
+  justify-content: center;
+  background-color: #f9f9f9;
+}
+
 .sectionContainer {
   position: absolute;
   top: 112px;
   left: 260px;
 }
-
-/* .videoDetail {
-  flex: 1 1 70%;
-}
-
-.videoList {
-  flex: 1 1 30%;
-} */

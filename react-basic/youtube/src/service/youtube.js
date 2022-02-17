@@ -30,7 +30,7 @@ export default class YoutubeService {
   async channels(channelId) {
     const response = await this.youtube.get('channels', {
       params: {
-        part: 'snippet',
+        part: 'snippet, statistics',
         id: channelId,
       },
     });

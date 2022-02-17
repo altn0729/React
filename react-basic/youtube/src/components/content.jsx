@@ -48,9 +48,10 @@ const Content = memo(({ content, youtubeService, onVideoClick }) => {
         </div>
       </div>
 
+      {/* 마우스 오버시 버튼 출력 */}
       <div className={styles.hoverVideo}>
-        <p className={styles.hoverPtag}>WATCH LATER</p>
-        <p className={styles.hoverPtag}>ADD TO QUEUE</p>
+        <button className={styles.hoverWatch}>WATCH LATER</button>
+        <button className={styles.hoverAdd}>ADD TO QUEUE</button>
       </div>
     </div>
   );

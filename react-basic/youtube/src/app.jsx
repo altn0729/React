@@ -9,6 +9,7 @@ import styles from './app.module.css';
 const App = ({ youtubeService }) => {
   const [videos, setVideos] = useState([]);
   const [selectedVideo, setSelectedVideo] = useState(null);
+  const [channel, setChannel] = useState(null);
 
   const search = (query) => {
     console.log(query);
@@ -17,7 +18,10 @@ const App = ({ youtubeService }) => {
 
   const onVideoClick = (video) => {
     setSelectedVideo(video);
-    console.log(video);
+  };
+
+  const getChannels = (channelId) => {
+    return youtubeService.channels(channelId).then((channel) => channel.map((item) => setChannel(item)));
   };
 
   useEffect(() => {
@@ -31,48 +35,24 @@ const App = ({ youtubeService }) => {
   return (
     <>
       <Header search={search} />
-      <div className={styles.appContainer}>
-        <Sidebar />
-        <section className={styles.sectionContainer}>
-          {selectedVideo ? (
-            <div className="">{selectedVideo && <VideoDetail video={selectedVideo} />}</div>
-          ) : (
-            <Contents videos={videos} youtubeService={youtubeService} onVideoClick={onVideoClick} />
+      {selectedVideo ? (
+        // 선택된 비디오가 있으면 해당 비디오 출력
+        <div className={styles.videoDetail}>
+          {selectedVideo && (
+            <VideoDetail video={selectedVideo} videos={videos} getChannels={getChannels} channel={channel} />
           )}
-        </section>
-      </div>
+        </div>
+      ) : (
+        // 선택된 비디오가 없으면 인기 있는 비디오 출력
+        <div className={styles.appContainer}>
+          <Sidebar />
+          <section className={styles.sectionContainer}>
+            <Contents videos={videos} youtubeService={youtubeService} onVideoClick={onVideoClick} />
+          </section>
+        </div>
+      )}
     </>
   );
 };
 
 export default App;
-
-/* <section className={styles.sectionContainer}>
-  {selectedVideo ? (
-    <div className="">{selectedVideo && <VideoDetail video={selectedVideo} />}</div>
-  ) : (
-    <Contents videos={videos} youtubeService={youtubeService} onVideoClick={onVideoClick} />
-  )}
-</section>; */
-
-{
-  /* <section className={styles.sectionContainer}>
-  <div className={styles.videoDetail}>{selectedVideo && <VideoDetail video={selectedVideo} />}</div>
-  <div className={styles.videoList}>
-    <Contents videos={videos} youtubeService={youtubeService} onVideoClick={onVideoClick} />
-  </div>
-</section>; */
-}
-
-{
-  /* <iframe
-        id="ytplayer"
-        type="text/html"
-        width="720"
-        height="405"
-        src="https://www.youtube.com/embed/M7lc1UVf-VE"
-        frameborder="0"
-        allowfullscreen
-      ></iframe>
-      ; */
-}

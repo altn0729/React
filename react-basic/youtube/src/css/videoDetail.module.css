@@ -1,3 +1,69 @@
-.videoDeatail {
+.videoContainer {
+  display: flex;
+  justify-content: center;
+  width: 95%;
+  /* 1060 부터 infoBtn 밑으로 내려감 (수정) */
+  min-width: 1080px;
+  height: 100vh;
+}
+
+.videoSec {
+  flex: 1 1 75%;
+  margin-left: 24px;
+  padding: 24px 24px 0 0;
+}
+
+.video {
+  position: relative;
+  overflow: hidden;
+  padding-top: 56.25%;
+}
+
+.youtubeIframe {
   position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.videoList {
+  flex: 1 1 25%;
+}
+
+.videoInfo {
+  padding: 20px 0 8px 0;
+  border-bottom: 1px solid #d9d9d9;
+}
+
+.videoInfo > .videoTag {
+  margin-right: 3px;
+  font-size: 12px;
+}
+
+.videoInfo > .videoTitle {
+  font-size: 18px;
+}
+
+.videoInfo > .info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  text-align: center;
+  font-size: 14px;
+}
+
+.info > p {
+  color: #606060;
+}
+
+/* 버튼 CSS */
+.infoBtn > button {
+  padding: 10px 23px;
+  font-family: 'Roboto', sans-serif, Arial;
+  font-weight: bold;
+}
+
+.infoBtn > button:not(:first-child) {
+  margin-left: 8px;
 }

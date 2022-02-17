@@ -13,7 +13,11 @@ const httpClient = axios.create({
 
 const youtubeService = new YoutubeService(httpClient);
 
-ReactDOM.render(
+// document.cookie = 'safeCookie1=foo; SameSite=Lax';
+// document.cookie = 'safeCookie2=foo';
+// document.cookie = 'crossCookie=bar; SameSite=None; Secure';
+
+https: ReactDOM.render(
   <React.StrictMode>
     <App youtubeService={youtubeService} />
   </React.StrictMode>,
