@@ -15,7 +15,6 @@ const App = ({ youtubeService }) => {
   };
 
   const onVideoClick = (video) => {
-    console.log(video);
     setSelectedVideo(video);
   };
 
@@ -33,7 +32,7 @@ const App = ({ youtubeService }) => {
       {selectedVideo ? (
         // 선택된 비디오가 있으면 해당 비디오 출력
         <div className={styles.videoDetail}>
-          {selectedVideo && <VideoDetail video={selectedVideo} videos={videos} />}
+          {selectedVideo && <VideoDetail video={selectedVideo} videos={videos} onVideoClick={onVideoClick} />}
         </div>
       ) : (
         // 선택된 비디오가 없으면 인기 있는 비디오 출력

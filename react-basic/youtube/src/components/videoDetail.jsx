@@ -4,15 +4,13 @@ import moment from 'moment';
 import numeral from 'numeral';
 import VideoList from './videoList';
 
-const VideoDetail = ({ video, videos }) => {
+const VideoDetail = ({ video, videos, onVideoClick }) => {
   const {
     id,
     channelIcon,
     snippet: { channelTitle, description, publishedAt, title, tags },
     statistics: { commentCount, likeCount, viewCount },
   } = video;
-
-  console.log(videos);
 
   return (
     <div className={styles.videoContainer}>
@@ -94,7 +92,7 @@ const VideoDetail = ({ video, videos }) => {
       {/* 우측 정렬된 비디오 리스트 */}
       <div className={styles.videoList}>
         {videos.map((list) => (
-          <VideoList key={videos.etag} list={list} />
+          <VideoList key={list.id} list={list} onVideoClick={onVideoClick} />
         ))}
       </div>
     </div>
