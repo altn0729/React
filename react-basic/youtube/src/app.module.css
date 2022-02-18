@@ -8,21 +8,20 @@
 a {
   text-decoration: none;
 }
+
 a:link {
   color: blue;
   text-decoration: none;
 }
+
 a:visited {
   color: blue;
   text-decoration: none;
 }
+
 a:hover {
   color: blue;
   text-decoration: none;
-}
-
-body {
-  font-family: 'Roboto', sans-serif, Arial;
 }
 
 button {
@@ -37,7 +36,6 @@ button {
   display: flex;
   justify-content: center;
   background-color: #f9f9f9;
-  height: 100vh;
 }
 
 .sectionContainer {

@@ -9,19 +9,14 @@ import styles from './app.module.css';
 const App = ({ youtubeService }) => {
   const [videos, setVideos] = useState([]);
   const [selectedVideo, setSelectedVideo] = useState(null);
-  const [channel, setChannel] = useState(null);
 
   const search = (query) => {
-    console.log(query);
     return youtubeService.search(query).then((videos) => setVideos([...videos]));
   };
 
   const onVideoClick = (video) => {
+    console.log(video);
     setSelectedVideo(video);
-  };
-
-  const getChannels = (channelId) => {
-    return youtubeService.channels(channelId).then((channel) => channel.map((item) => setChannel(item)));
   };
 
   useEffect(() => {
@@ -38,9 +33,7 @@ const App = ({ youtubeService }) => {
       {selectedVideo ? (
         // 선택된 비디오가 있으면 해당 비디오 출력
         <div className={styles.videoDetail}>
-          {selectedVideo && (
-            <VideoDetail video={selectedVideo} videos={videos} getChannels={getChannels} channel={channel} />
-          )}
+          {selectedVideo && <VideoDetail video={selectedVideo} videos={videos} />}
         </div>
       ) : (
         // 선택된 비디오가 없으면 인기 있는 비디오 출력

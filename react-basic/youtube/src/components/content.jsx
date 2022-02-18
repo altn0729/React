@@ -1,11 +1,11 @@
-import React, { useEffect, memo, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import styles from '../css/content.module.css';
 import moment from 'moment';
 import numeral from 'numeral';
 
 // snippet, contentDetails, statistics
 
-const Content = memo(({ content, youtubeService, onVideoClick }) => {
+const Content = ({ content, youtubeService, onVideoClick }) => {
   const [channelIcon, setChannelIcon] = useState(null);
 
   const {
@@ -29,7 +29,8 @@ const Content = memo(({ content, youtubeService, onVideoClick }) => {
   }, [youtubeService, channelId]);
 
   return (
-    <div className={styles.content} onClick={() => onVideoClick(content)}>
+    // content 오브젝트에 channelIcon 묶어서 전달
+    <div className={styles.content} onClick={() => onVideoClick({ ...content, channelIcon })}>
       <div>
         <img className={styles.thumbnails} src={medium.url} alt="thumbnails" />
       </div>
@@ -55,6 +56,6 @@ const Content = memo(({ content, youtubeService, onVideoClick }) => {
       </div>
     </div>
   );
-});
+};
 
 export default Content;

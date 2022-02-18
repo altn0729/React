@@ -1,27 +1,18 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import styles from '../css/videoDetail.module.css';
 import moment from 'moment';
 import numeral from 'numeral';
+import VideoList from './videoList';
 
-const VideoDetail = ({ video, videos, getChannels, channel }) => {
-  // const {
-  //   snippet: { thumbnails },
-  //   statistics: { subscriberCount },
-  // } = channel;
-
+const VideoDetail = ({ video, videos }) => {
   const {
     id,
-    snippet: { channelId, channelTitle, description, publishedAt, title, tags },
+    channelIcon,
+    snippet: { channelTitle, description, publishedAt, title, tags },
     statistics: { commentCount, likeCount, viewCount },
   } = video;
 
-  // console.log(videos);
-  console.log(video);
-  // console.log(channel);
-
-  // useEffect(() => {
-  //   getChannels(channelId);
-  // }, [video]);
+  console.log(videos);
 
   return (
     <div className={styles.videoContainer}>
@@ -40,8 +31,8 @@ const VideoDetail = ({ video, videos, getChannels, channel }) => {
 
         <div className={styles.videoInfo}>
           {/* 테그명 출력 */}
-          {tags.map((tag) => (
-            <a href="#" key={tag} className={styles.videoTag}>
+          {tags.map((tag, index) => (
+            <a href="#" key={index} className={styles.videoTag}>
               #{tag}
             </a>
           ))}
@@ -69,8 +60,7 @@ const VideoDetail = ({ video, videos, getChannels, channel }) => {
         {/* 채널 아이콘, 채널명, 구독자 수, 동영상 설명 */}
         <div className={styles.videoDescription}>
           <div className={styles.channelDetaile}>
-            {/* <img src={channel && channel.snippet.thumbnails.default.url} alt="" /> */}
-            <div className={styles.channelIcon}></div>
+            <img className={styles.channelIcon} src={channelIcon} alt="channelIcon" />
             <div className={styles.channelInfo}>
               <p className={styles.channelTitle}>{channelTitle}</p>
               <p className={styles.subscriberCount}>19.9M subscribers</p>
@@ -79,29 +69,34 @@ const VideoDetail = ({ video, videos, getChannels, channel }) => {
           <button className={styles.subscriberBtn}>SUBSCRIBE</button>
         </div>
         <div className={styles.description}>
-          {description.split('\n').map(
-            (text) =>
-              text !== '' ? (
-                // 키 설정 부분 수정할 것
-                <span key={console.log(text.replace(/\s/gi, '').replace('’', ''))}>
-                  {/* <span key={text.replace(/\s/gi, '').replace('’', '')}> */}
-                  {/* <span key={text.replace(/\s/gi, '').substr(5, 8)}></span> */}
-                  {text}
-                  <br />
-                </span>
-              ) : (
+          {description.split('\n').map((text, index) =>
+            text !== '' ? (
+              // key 값으로 넣을수 있는게 없어서 임시로 index 값 사용
+              // index는 배열의 순서가 바뀌면 index도 바뀌기 때문에 권장하지 않음.
+              <span key={index}>
+                {text}
                 <br />
-              )
-            // console.log(text.replace(/\s/gi, '').substr(5, 5))
+              </span>
+            ) : (
+              <br key={index} />
+            )
           )}
-          {/* {console.log(description)} */}
         </div>
+
+        <hr className={styles.videoDesHr} />
+
         {/* 댓글 수 출력 */}
-        <div className=""></div>
+        <div className={styles.comments}>
+          <p>{commentCount} Comments</p>
+        </div>
       </section>
 
       {/* 우측 정렬된 비디오 리스트 */}
-      <div className={styles.videoList}>비디오 리스트</div>
+      <div className={styles.videoList}>
+        {videos.map((list) => (
+          <VideoList key={videos.etag} list={list} />
+        ))}
+      </div>
     </div>
   );
 };

@@ -30,6 +30,9 @@ const FilterContent = ({ content, youtubeService }) => {
       .then((channel) => channel.map((items) => setChannelIcon(items.snippet.thumbnails.default.url)));
   }, [youtubeService, channelId]);
 
+  // console.log(`filterContent에서의 스테티스틱: ${statistic}`);
+  // console.log(`filterContent에서의 채널 아이콘: ${channelIcon}`);
+
   return (
     <div>
       {/* {statistic.viewCount} */}
@@ -40,7 +43,7 @@ const FilterContent = ({ content, youtubeService }) => {
         <div className={styles.details}>
           <p className={styles.title}>{title}</p>
           <p className={styles.statistic}>
-            {statistic && numeral(statistic.viewCount).format('0.a').toUpperCase()} views ·{' '}
+            {statistic && numeral(statistic.viewCount).format('0.a').toUpperCase()} views{' '}
             {moment(publishedAt).fromNow()}
           </p>
           <div className={styles.channelDetails}>

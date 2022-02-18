@@ -9,8 +9,6 @@ const Header = ({ search }) => {
     event.preventDefault();
     const value = inputRef.current.value;
 
-    console.log(`Search Result: ${value}`);
-
     value && search(value);
   };
 
