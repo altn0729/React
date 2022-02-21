@@ -4,6 +4,7 @@ import Contents from './components/contents';
 import Sidebar from './components/sidebar';
 import '@fortawesome/fontawesome-free/js/all.js';
 import VideoDetail from './components/videoDetail';
+import VideoList from './components/videoList';
 import styles from './app.module.css';
 
 const App = ({ youtubeService }) => {
@@ -31,8 +32,17 @@ const App = ({ youtubeService }) => {
       <Header search={search} />
       {selectedVideo ? (
         // 선택된 비디오가 있으면 해당 비디오 출력
-        <div className={styles.videoDetail}>
-          {selectedVideo && <VideoDetail video={selectedVideo} videos={videos} onVideoClick={onVideoClick} />}
+        <div className={styles.videoContainer}>
+          <div className={styles.videoWrap}>
+            <div className={styles.videoInfo}>{selectedVideo && <VideoDetail video={selectedVideo} />}</div>
+
+            {/* 우측 정렬된 비디오 리스트 */}
+            <div className={styles.videoList}>
+              {videos.map((video) => (
+                <VideoList key={video.id} video={video} onVideoClick={onVideoClick} />
+              ))}
+            </div>
+          </div>
         </div>
       ) : (
         // 선택된 비디오가 없으면 인기 있는 비디오 출력

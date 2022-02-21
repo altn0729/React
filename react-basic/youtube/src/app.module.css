@@ -31,11 +31,23 @@ button {
   background-color: transparent;
 }
 
-.videoDetail {
-  margin-top: 56px;
-  display: flex;
-  justify-content: center;
+.videoContainer {
   background-color: #f9f9f9;
+  margin-top: 56px;
+}
+
+.videoWrap {
+  margin: 0 auto;
+  display: flex;
+  /* 1060 부터 infoBtn 밑으로 내려감 (수정) */
+  min-width: 1080px;
+  max-width: 1760px;
+}
+
+.videoList {
+  display: flex;
+  flex-direction: column;
+  padding: 24px 24px 0 0;
 }
 
 .sectionContainer {

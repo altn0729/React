@@ -2,9 +2,8 @@ import React from 'react';
 import styles from '../css/videoDetail.module.css';
 import moment from 'moment';
 import numeral from 'numeral';
-import VideoList from './videoList';
 
-const VideoDetail = ({ video, videos, onVideoClick }) => {
+const VideoDetail = ({ video }) => {
   const {
     id,
     channelIcon,
@@ -13,7 +12,7 @@ const VideoDetail = ({ video, videos, onVideoClick }) => {
   } = video;
 
   return (
-    <div className={styles.videoContainer}>
+    <div className={styles.videoWidth}>
       {/* 비디오 디테일 정보 */}
       <section className={styles.videoSec}>
         <div className={styles.video}>
@@ -28,12 +27,13 @@ const VideoDetail = ({ video, videos, onVideoClick }) => {
         </div>
 
         <div className={styles.videoInfo}>
-          {/* 테그명 출력 */}
-          {tags.map((tag, index) => (
-            <a href="#" key={index} className={styles.videoTag}>
-              #{tag}
-            </a>
-          ))}
+          {/* 테그가 있을 경우 테그명 출력 */}
+          {tags &&
+            tags.map((tag, index) => (
+              <a href="#!0" key={index} className={styles.videoTag}>
+                #{tag}
+              </a>
+            ))}
 
           {/* 비디오 타이틀 */}
           <h1 className={styles.videoTitle}>{title}</h1>
@@ -88,19 +88,8 @@ const VideoDetail = ({ video, videos, onVideoClick }) => {
           <p>{commentCount} Comments</p>
         </div>
       </section>
-
-      {/* 우측 정렬된 비디오 리스트 */}
-      <div className={styles.videoList}>
-        {videos.map((list) => (
-          <VideoList key={list.id} list={list} onVideoClick={onVideoClick} />
-        ))}
-      </div>
     </div>
   );
 };
 
 export default VideoDetail;
-
-// <div className={styles.videoDetail}>
-//   <h1>{video.snippet.title}</h1>
-// </div>;
