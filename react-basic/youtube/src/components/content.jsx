@@ -3,8 +3,6 @@ import styles from '../css/content.module.css';
 import moment from 'moment';
 import numeral from 'numeral';
 
-// snippet, contentDetails, statistics
-
 const Content = ({ content, youtubeService, onVideoClick }) => {
   const [channelIcon, setChannelIcon] = useState(null);
 

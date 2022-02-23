@@ -44,6 +44,10 @@ button {
   max-width: 1760px;
 }
 
+.videoInfo {
+  width: 100%;
+}
+
 .videoList {
   display: flex;
   flex-direction: column;

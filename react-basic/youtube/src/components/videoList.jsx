@@ -1,17 +1,15 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import styles from '../css/videoList.module.css';
 import moment from 'moment';
 import numeral from 'numeral';
 
 const VideoList = ({ video, onVideoClick }) => {
-  console.log(video);
-
   const {
     id,
-    channelIcon,
     snippet: {
       thumbnails: { medium },
       channelTitle,
+      channelId,
       description,
       publishedAt,
       title,
