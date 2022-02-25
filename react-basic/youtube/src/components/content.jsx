@@ -4,7 +4,7 @@ import moment from 'moment';
 import numeral from 'numeral';
 
 const Content = ({ content, youtubeService, onVideoClick }) => {
-  const [channelIcon, setChannelIcon] = useState(null);
+  const [channels, setChannels] = useState(null);
 
   const {
     snippet: {
@@ -23,19 +23,20 @@ const Content = ({ content, youtubeService, onVideoClick }) => {
   useEffect(() => {
     youtubeService
       .channels(channelId)
-      .then((channel) => channel.map((items) => setChannelIcon(items.snippet.thumbnails.default.url)));
+      .then((channel) => channel.map((items) => setChannels(items.snippet.thumbnails.default.url)));
   }, [youtubeService, channelId]);
 
   return (
     // content 오브젝트에 channelIcon 묶어서 전달
-    <div className={styles.content} onClick={() => onVideoClick({ ...content, channelIcon })}>
+    // <div className={styles.content} onClick={() => onVideoClick({ ...content, channels })}>
+    <div className={styles.content} onClick={() => onVideoClick({ ...content })}>
       <div>
         <img className={styles.thumbnails} src={medium.url} alt="thumbnails" />
       </div>
 
       <div className={styles.details}>
         <div className={styles.channelThumbnails}>
-          <img src={channelIcon} alt="channelIcon" />
+          <img src={channels} alt="channelIcon" />
         </div>
 
         <div className={styles.channelDetails}>

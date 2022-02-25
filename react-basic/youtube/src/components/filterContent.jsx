@@ -3,40 +3,52 @@ import styles from '../css/filterContent.module.css';
 import moment from 'moment';
 import numeral from 'numeral';
 
-const FilterContent = ({ content, youtubeService }) => {
+const FilterContent = ({ content, youtubeService, onVideoClick }) => {
   const [statistic, setStatistic] = useState();
-  const [channelIcon, setChannelIcon] = useState();
+  const [channels, setChannels] = useState();
 
   const {
     id: { videoId },
     snippet: {
+      thumbnails: { medium },
       channelId,
       channelTitle,
-      publishedAt,
       description,
-      thumbnails: { medium },
+      publishedAt,
       title,
+      tags,
     },
   } = content;
 
-  // console.log(`${videoId}, ${channelId}, ${channelTitle}, ${publishedAt}, ${medium}, ${title}`);
   useEffect(() => {
-    youtubeService.statistics(videoId).then((items) => items.map((item) => setStatistic(item.statistics)));
-  }, [youtubeService]);
+    videoId && youtubeService.statistics(videoId).then((items) => items.map((item) => setStatistic(item.statistics)));
+  }, [youtubeService, videoId]);
 
   useEffect(() => {
-    youtubeService
-      .channels(channelId)
-      .then((channel) => channel.map((items) => setChannelIcon(items.snippet.thumbnails.default.url)));
+    channelId &&
+      youtubeService
+        .channels(channelId)
+        .then((channel) => channel.map((items) => setChannels(items.snippet.thumbnails.default.url)));
   }, [youtubeService, channelId]);
 
-  // console.log(`filterContent에서의 스테티스틱: ${statistic}`);
-  // console.log(`filterContent에서의 채널 아이콘: ${channelIcon}`);
-
+  // console.log({
+  //   id: videoId,
+  //   snippet: { thumbnails: { medium }, channelId, channelTitle, publishedAt, description, title, tags },
+  //   statistics: { ...statistic },
+  // });
   return (
     <div>
       {/* {statistic.viewCount} */}
-      <div className={styles.filterContent}>
+      <div
+        className={styles.filterContent}
+        onClick={() =>
+          onVideoClick({
+            id: videoId,
+            snippet: { thumbnails: { medium }, channelId, channelTitle, publishedAt, description, title, tags },
+            statistics: { ...statistic },
+          })
+        }
+      >
         <div className="">
           <img className={styles.thumbnails} src={medium.url} alt="thumbnails" />
         </div>
@@ -47,7 +59,7 @@ const FilterContent = ({ content, youtubeService }) => {
             {moment(publishedAt).fromNow()}
           </p>
           <div className={styles.channelDetails}>
-            <img className={styles.channelIcon} src={channelIcon && channelIcon} alt="channelIcon" />
+            <img className={styles.channelIcon} src={channels} alt="channelIcon" />
             <p className={styles.channelTitle}>{channelTitle}</p>
           </div>
           <p className={styles.description}>{description}</p>

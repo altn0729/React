@@ -15,6 +15,17 @@ export default class YoutubeService {
     return response.data.items;
   }
 
+  async channels(channelId) {
+    const response = await this.youtube.get('channels', {
+      params: {
+        part: 'snippet, statistics',
+        id: channelId,
+      },
+    });
+
+    return response.data.items;
+  }
+
   async mostPopular() {
     const response = await this.youtube.get('videos', {
       params: {
@@ -27,22 +38,11 @@ export default class YoutubeService {
     return response.data.items;
   }
 
-  async channels(channelId) {
-    const response = await this.youtube.get('channels', {
-      params: {
-        part: 'snippet, statistics',
-        id: channelId,
-      },
-    });
-
-    return response.data.items;
-  }
-
-  async statistics(id) {
+  async statistics(videoId) {
     const response = await this.youtube.get('videos', {
       params: {
         part: 'statistics',
-        id: id,
+        id: videoId,
       },
     });
 

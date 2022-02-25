@@ -1,15 +1,25 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import styles from '../css/videoDetail.module.css';
 import moment from 'moment';
 import numeral from 'numeral';
 
-const VideoDetail = ({ video }) => {
+const VideoDetail = ({ video, youtubeService }) => {
+  console.log(video);
+  const [channels, setChannels] = useState(null);
+
   const {
     id,
     channelIcon,
-    snippet: { channelTitle, description, publishedAt, title, tags },
+    snippet: { channelTitle, description, publishedAt, title, tags, channelId },
     statistics: { commentCount, likeCount, viewCount },
   } = video;
+
+  useEffect(() => {
+    channelId &&
+      youtubeService
+        .channels(channelId)
+        .then((channel) => channel.map((items) => setChannels(items.snippet.thumbnails.default.url)));
+  }, [video, channelId, youtubeService]);
 
   return (
     <div className={styles.videoWidth}>
@@ -58,7 +68,7 @@ const VideoDetail = ({ video }) => {
         {/* 채널 아이콘, 채널명, 구독자 수, 동영상 설명 */}
         <div className={styles.videoDescription}>
           <div className={styles.channelDetaile}>
-            <img className={styles.channelIcon} src={channelIcon} alt="channelIcon" />
+            <img className={styles.channelIcon} src={channelIcon || channels} alt="channelIcon" />
             <div className={styles.channelInfo}>
               <p className={styles.channelTitle}>{channelTitle}</p>
               <p className={styles.subscriberCount}>19.9M subscribers</p>

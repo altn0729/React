@@ -2,7 +2,7 @@ import Content from './content';
 import styles from '../css/contents.module.css';
 import FilterContent from './filterContent';
 
-const Contents = ({ videos, getChannels, youtubeService, onVideoClick }) => {
+const Contents = ({ videos, youtubeService, onVideoClick }) => {
   return (
     <div className={styles.container}>
       <div className={styles.contentsHeader}></div>
@@ -14,7 +14,6 @@ const Contents = ({ videos, getChannels, youtubeService, onVideoClick }) => {
               <Content
                 key={content.id}
                 content={content} //
-                getChannels={getChannels}
                 youtubeService={youtubeService}
                 onVideoClick={onVideoClick}
               />
