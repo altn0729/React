@@ -1,11 +1,13 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import styles from '../css/videoList.module.css';
 import moment from 'moment';
 import numeral from 'numeral';
+import { useEffect, useState } from 'react';
 
+// 필요한 오브젝트 정리
+// Channel, statistics 정보
 const VideoList = ({ video, onVideoClick, youtubeService }) => {
-  // console.log(video);
-  const [statistic, setStatistic] = useState();
+  const [statistics, setStatistics] = useState();
 
   const {
     id: { videoId },
@@ -18,24 +20,20 @@ const VideoList = ({ video, onVideoClick, youtubeService }) => {
   } = video;
 
   useEffect(() => {
-    videoId && youtubeService.statistics(videoId).then((items) => items.map((item) => setStatistic(item.statistics)));
-    // youtubeService.statistics(videoId).then((items) => items.map((item) => console.log(item)));
-  }, []);
+    videoId && youtubeService.statistics(videoId).then((items) => items.map((item) => setStatistics(item.statistics)));
+  }, [youtubeService, videoId]);
 
-  console.log(statistic.viewCount);
-
-  // console.log(statistic);
   return (
     // 컨텐트 오버시 메뉴 모양 및 영상 시간, 두개 버튼 나오게끔 (포지션 사용)
     <div className={styles.listWrap} onClick={() => onVideoClick(video)}>
       <div className={styles.listThumb}>
-        <img src={medium.url} alt="listThumb" />
+        <img src={medium.url} alt="listT humb" />
       </div>
       <div className={styles.listDetaile}>
         <h3>{title}</h3>
         <span>{channelTitle}</span>
         <span>
-          {statistic.viewCount && numeral(statistic.viewCount).format('0.a').toUpperCase()} views ·{' '}
+          {statistics && numeral(statistics.viewCount).format('0.a').toUpperCase()} views ·{' '}
           {moment(publishedAt).fromNow()}
         </span>
       </div>

@@ -9,19 +9,21 @@ import styles from './app.module.css';
 
 const App = ({ youtubeService }) => {
   const [videos, setVideos] = useState([]);
+  const [statistics, setStatistics] = useState([]);
   const [selectedVideo, setSelectedVideo] = useState(null);
 
   const search = (query) => {
-    return youtubeService.search(query).then((videos) => setVideos([...videos]));
+    setSelectedVideo(null);
+
+    youtubeService.search(query).then((videos) => setVideos(videos));
   };
 
   const onVideoClick = (video) => {
     setSelectedVideo(video);
-    console.log(video);
   };
 
   useEffect(() => {
-    youtubeService.mostPopular().then((videos) => setVideos([...videos]));
+    youtubeService.mostPopular().then((videos) => setVideos(videos));
 
     // 특정 값들이 리렌더링 시에 변경되지 않는다면
     // React로 하여금 effect를 건너뛰도록 할 수 있다. (두번째 인자)
@@ -48,12 +50,12 @@ const App = ({ youtubeService }) => {
         </div>
       ) : (
         // 선택된 비디오가 없으면 인기 있는 비디오 출력
-        <div className={styles.appContainer}>
+        <>
           <Sidebar />
           <section className={styles.sectionContainer}>
             <Contents videos={videos} youtubeService={youtubeService} onVideoClick={onVideoClick} />
           </section>
-        </div>
+        </>
       )}
     </>
   );

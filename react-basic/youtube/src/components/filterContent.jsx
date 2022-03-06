@@ -3,7 +3,7 @@ import styles from '../css/filterContent.module.css';
 import moment from 'moment';
 import numeral from 'numeral';
 
-const FilterContent = ({ content, youtubeService, onVideoClick }) => {
+const FilterContent = ({ content, onVideoClick, youtubeService }) => {
   const [statistic, setStatistic] = useState();
   const [channels, setChannels] = useState();
 
@@ -21,8 +21,8 @@ const FilterContent = ({ content, youtubeService, onVideoClick }) => {
   } = content;
 
   useEffect(() => {
-    videoId && youtubeService.statistics(videoId).then((items) => items.map((item) => setStatistic(item.statistics)));
-  }, [youtubeService, videoId]);
+    videoId && youtubeService.statistics(videoId).then((result) => setStatistic(result));
+  }, [videoId, youtubeService]);
 
   useEffect(() => {
     channelId &&
@@ -31,14 +31,8 @@ const FilterContent = ({ content, youtubeService, onVideoClick }) => {
         .then((channel) => channel.map((items) => setChannels(items.snippet.thumbnails.default.url)));
   }, [youtubeService, channelId]);
 
-  // console.log({
-  //   id: videoId,
-  //   snippet: { thumbnails: { medium }, channelId, channelTitle, publishedAt, description, title, tags },
-  //   statistics: { ...statistic },
-  // });
   return (
     <div>
-      {/* {statistic.viewCount} */}
       <div
         className={styles.filterContent}
         onClick={() =>
@@ -49,7 +43,7 @@ const FilterContent = ({ content, youtubeService, onVideoClick }) => {
           })
         }
       >
-        <div className="">
+        <div>
           <img className={styles.thumbnails} src={medium.url} alt="thumbnails" />
         </div>
         <div className={styles.details}>
