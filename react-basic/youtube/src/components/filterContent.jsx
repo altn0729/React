@@ -21,7 +21,7 @@ const FilterContent = ({ content, onVideoClick, youtubeService }) => {
   } = content;
 
   useEffect(() => {
-    videoId && youtubeService.statistics(videoId).then((result) => setStatistic(result));
+    videoId && youtubeService.statistics(videoId).then((items) => items.map((item) => setStatistic(item.statistics)));
   }, [videoId, youtubeService]);
 
   useEffect(() => {
@@ -39,7 +39,7 @@ const FilterContent = ({ content, onVideoClick, youtubeService }) => {
           onVideoClick({
             id: videoId,
             snippet: { thumbnails: { medium }, channelId, channelTitle, publishedAt, description, title, tags },
-            statistics: { ...statistic },
+            statistics: statistic,
           })
         }
       >

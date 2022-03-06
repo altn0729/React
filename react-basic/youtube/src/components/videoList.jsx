@@ -21,11 +21,14 @@ const VideoList = ({ video, onVideoClick, youtubeService }) => {
 
   useEffect(() => {
     videoId && youtubeService.statistics(videoId).then((items) => items.map((item) => setStatistics(item.statistics)));
+    // videoId && youtubeService.statistics(videoId).then((items) => items.map((item) => console.log(item.statistics)));
   }, [youtubeService, videoId]);
+
+  // console.log({ ...video, statistics });
 
   return (
     // 컨텐트 오버시 메뉴 모양 및 영상 시간, 두개 버튼 나오게끔 (포지션 사용)
-    <div className={styles.listWrap} onClick={() => onVideoClick(video)}>
+    <div className={styles.listWrap} onClick={() => onVideoClick({ ...video, id: videoId, statistics })}>
       <div className={styles.listThumb}>
         <img src={medium.url} alt="listT humb" />
       </div>

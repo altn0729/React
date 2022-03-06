@@ -9,7 +9,6 @@ import styles from './app.module.css';
 
 const App = ({ youtubeService }) => {
   const [videos, setVideos] = useState([]);
-  const [statistics, setStatistics] = useState([]);
   const [selectedVideo, setSelectedVideo] = useState(null);
 
   const search = (query) => {
@@ -19,6 +18,7 @@ const App = ({ youtubeService }) => {
   };
 
   const onVideoClick = (video) => {
+    console.log(video);
     setSelectedVideo(video);
   };
 
