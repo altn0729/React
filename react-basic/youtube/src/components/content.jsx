@@ -28,7 +28,6 @@ const Content = ({ content, youtubeService, onVideoClick }) => {
 
   return (
     // content 오브젝트에 channelIcon 묶어서 전달
-    // <div className={styles.content} onClick={() => onVideoClick({ ...content, channels })}>
     <div className={styles.content} onClick={() => onVideoClick({ ...content })}>
       <div>
         <img className={styles.thumbnails} src={medium.url} alt="thumbnails" />

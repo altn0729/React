@@ -12,11 +12,6 @@ export default class YoutubeService {
       },
     });
 
-    // response.data.items.map((result) => console.log(result.id.videoId));
-    // response.data.items.map(async (result) =>
-    //   this.statistics(result.id.videoId).then((item) => console.log({ ...result, ...item[0] }))
-    // );
-
     return response.data.items;
   }
 

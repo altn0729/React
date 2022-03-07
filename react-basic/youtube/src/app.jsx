@@ -18,7 +18,6 @@ const App = ({ youtubeService }) => {
   };
 
   const onVideoClick = (video) => {
-    console.log(video);
     setSelectedVideo(video);
   };
 
