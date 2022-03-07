@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React, { useRef, memo } from 'react';
 
 const HabitAddForm = memo(({ onAdd }) => {
   const formRef = useRef();
