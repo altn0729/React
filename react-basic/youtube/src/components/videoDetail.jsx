@@ -4,7 +4,6 @@ import moment from 'moment';
 import numeral from 'numeral';
 
 const VideoDetail = ({ video, youtubeService }) => {
-  console.log(video);
   const [channels, setChannels] = useState(null);
 
   const {

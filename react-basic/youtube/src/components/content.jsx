@@ -5,6 +5,7 @@ import numeral from 'numeral';
 
 const Content = ({ content, youtubeService, onVideoClick }) => {
   const [channels, setChannels] = useState(null);
+  // console.log(channels);
 
   const {
     snippet: {
@@ -24,6 +25,7 @@ const Content = ({ content, youtubeService, onVideoClick }) => {
     youtubeService
       .channels(channelId)
       .then((channel) => channel.map((items) => setChannels(items.snippet.thumbnails.default.url)));
+    // .then((channel) => channel.map((items) => setChannels(items)));
   }, [youtubeService, channelId]);
 
   return (

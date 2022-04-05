@@ -21,7 +21,6 @@
 ### 💬Language
 
 - HTML
-- CSS
 - Java Script
 - React
 - Post CSS
