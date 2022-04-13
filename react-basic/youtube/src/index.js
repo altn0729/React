@@ -1,9 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
 import App from './app';
 import axios from 'axios';
 import YoutubeService from './service/youtube.js';
+import './index.css';
 import '@fontsource/roboto';
 
 const httpClient = axios.create({
